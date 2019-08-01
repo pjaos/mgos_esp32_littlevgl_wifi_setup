@@ -13,7 +13,7 @@ This interface presents the following screens
 * Enter the WiFi SSID.  
     The user may enter the WiFi SSID via an on screen keyboard (this pops up if the user presses on the WiFi SSID text area).
     Alternatively the user may press the Scan button to scan for available WiFi networks. Once the scan is complete the required 
-    network can be selected from an on screen pulldown list. Once the WiFi SSID has been entered the user can press the Next button
+    network can be selected from an on screen pulldown list. Once the WiFi SSID has been entered the user can press the Next button  
     ![alt text](screen0a.png "") | ![alt text](screen0b.png "") | ![alt text](screen0c.png "") | ![alt text](screen0d.png "")<br><br>
 * Enter the WiFi password.  
     The user may enter the WiFi password via an on screen keyboard. As each key is pressed the character entered appears in the 
