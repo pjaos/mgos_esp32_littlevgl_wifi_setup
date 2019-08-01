@@ -8,7 +8,7 @@ a TFT screen connected. This is similar to the Huzzah featherwing device. A sche
 
 ## WiFi Setup GUI
 
-Therefore if no station WiFi SSID is configured the user is guided through a Wizard style interface to configure the GUI.
+If no station WiFi SSID is configured the user is guided through a wizard style interface to configure the GUI.
 This interface presents the following screens
 * Enter the WiFi SSID.  
     The user may enter the WiFi SSID via an on screen keyboard (this pops up if the user presses on the WiFi SSID text area).
