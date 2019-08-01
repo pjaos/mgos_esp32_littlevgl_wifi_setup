@@ -9,11 +9,9 @@
 #include "lv_hal_disp.h"
 #include "lv_hal_disp.h"
 #include "lv_color.h"
-#include "lv_examples/lv_apps/benchmark/benchmark.h"
-#include "lv_examples/lv_apps/demo/demo.h"
-#include "lv_examples/lv_apps/sysmon/sysmon.h"
-#include "lv_examples/lv_apps/terminal/terminal.h"
-#include "lv_examples/lv_apps/tpcal/tpcal.h"
+#include "setup_wifi/scan_wifi_networks.h"
+#include "setup_wifi/setup_wifi_gui.h"
+#include "app/app.h"
 
 static lv_coord_t last_x=0;                 //The last x pos pressed on the touch screen
 static lv_coord_t last_y=0;                 //The last y pos pressed on the touch screen
@@ -21,6 +19,8 @@ static bool touch_screen_pressed = false;   //The last touched status of the tou
 
 #define SYS_STATS_TIMER_MS 1000             //Period of the stats timer in MS
 #define LVGL_TIMER__MS 5                    //Period of the timer tasks required to run LVGL
+
+static void start_gui(void);
 
 /**
  * @brief A timer callback (called every SYS_STATS_TIMER_MS) to display
@@ -155,12 +155,8 @@ enum mgos_app_init_result mgos_app_init(void) {
 
         mgos_set_timer(SYS_STATS_TIMER_MS, MGOS_TIMER_REPEAT, sys_stats_timer_cb, NULL);
 
-        //Only one of these should be uncommented at a time.
-        //benchmark_create();
-        demo_create();
-        //sysmon_create();
-        //terminal_create();
-        //tpcal_create();
+        start_gui();
+
     }
 
     //Set the display LED pin high to turn on display
@@ -168,4 +164,19 @@ enum mgos_app_init_result mgos_app_init(void) {
     mgos_gpio_write(mgos_sys_config_get_ili9341_led_pin(), true);
 
     return MGOS_APP_INIT_SUCCESS;
+}
+
+/**
+ * @brief Start the GUI. If an WiFi SSID (term) is not configured then
+ *        start a GUI to configured the WiFi. Otherwise run the application GUI.
+ */
+static void start_gui(void) {
+    char *ssid = (char *)mgos_sys_config_get_wifi_sta_ssid();
+
+    if( ssid && strlen(ssid) > 0 ) {
+        gui();
+    }
+    else {
+        setup_wifi_start();
+    }
 }

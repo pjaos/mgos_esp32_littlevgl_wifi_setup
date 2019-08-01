@@ -22,12 +22,9 @@ sources:
   - src/lvgl/src/lv_misc
   - src/lvgl/src/lv_objx
   - src/lvgl/src/lv_themes
-  - src/lv_examples/lv_apps/benchmark
-  - src/lv_examples/lv_apps/demo
-  - src/lv_examples/lv_apps/sysmon
-  - src/lv_examples/lv_apps/terminal
-  - src/lv_examples/lv_apps/tpcal
-    
+  - src/setup_wifi
+  - src/app
+
 includes:
   - src/lvgl/src/lv_core
   - src/lvgl/src/lv_draw
@@ -36,11 +33,8 @@ includes:
   - src/lvgl/src/lv_misc
   - src/lvgl/src/lv_objx
   - src/lvgl/src/lv_themes
-  - src/lv_examples/lv_apps/benchmark
-  - src/lv_examples/lv_apps/demo
-  - src/lv_examples/lv_apps/sysmon
-  - src/lv_examples/lv_apps/terminal
-  - src/lv_examples/lv_apps/tpcal
+  - src/setup_wifi
+  - src/app
 
 # List of dirs. Files from these dirs will be copied to the device filesystem
 filesystem:
@@ -70,6 +64,14 @@ config_schema:
  - ["ads7843.max_x_adc",          "i", 120,       {title: "The max X axis ADC calibration value. Enter the value from debug output (max adc x value at screen edge)."}]
  - ["ads7843.min_y_adc",          "i", 7,         {title: "The min Y axis ADC calibration value. Enter the value from debug output (min adc y value at screen edge)."}]
  - ["ads7843.max_y_adc",          "i", 118,       {title: "The max Y axis ADC calibration value. Enter the value from debug output (max adc y value at screen edge)."}]
+
+#Wifi Settings
+ - ["wifi.ap.pass",               "s", "",         {title: "The default AP password when setting up."}]
+ - ["wifi.ap.enable",             "b", false,      {title: "EW"}]
+ - ["wifi.sta.enable",            "b", true,       {title: "EW"}]
+ - ["wifi.sta.ssid",              "s", "",         {title: "SSID"}]
+ - ["wifi.sta.pass",              "s", "",         {title: "PW"}]
+
 
 # List of libraries used by this app, in order of initialisation
 libs:
