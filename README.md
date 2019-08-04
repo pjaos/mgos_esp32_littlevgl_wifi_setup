@@ -6,6 +6,10 @@ This application is designed to be a template for a device that needs the WiFi c
 It provides the ability to configure the device to connect to an existing WiFi network. The hardware used is an ESP32 device with
 a TFT screen connected. This is similar to the Huzzah featherwing device. A schematic of the hardware is included below.
 
+This git repo contains a submdule (lvgl). Therefore use the --recurse-submodules git command line option when cloning the repo.
+
+Before compiling the code (running build.sh) you'll need to install the mos tool as detailed at https://mongoose-os.com/docs/mongoose-os/quickstart/setup.md.
+
 ## WiFi Setup GUI
 
 If no station WiFi SSID is configured the user is guided through a wizard style interface to configure the GUI.
